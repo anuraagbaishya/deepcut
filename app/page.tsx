@@ -12,21 +12,8 @@ const CATEGORY_ICONS: Record<string, string> = {
 
 const TEAM_COLORS = ['#FF5555', '#5599FF', '#44DD77', '#FFCC33', '#AA77FF', '#FF77CC'];
 
-function useWindowWidth() {
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    setWidth(window.innerWidth);
-    const handler = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', handler);
-    return () => window.removeEventListener('resize', handler);
-  }, []);
-  return width;
-}
-
 export default function SetupPage() {
   const router = useRouter();
-  const windowWidth = useWindowWidth();
-  const isMobile = windowWidth < 768;
   const [lists, setLists] = useState<ListSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -73,7 +60,7 @@ export default function SetupPage() {
         position: 'sticky', top: 0, zIndex: 10,
       }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 16px', height: 56, display: 'flex', alignItems: 'center', gap: 16 }}>
-          <span style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, fontSize: isMobile ? 18 : 22, letterSpacing: 4, color: 'var(--lime)', textTransform: 'uppercase' }}>
+          <span className="logo" style={{ fontFamily: "'Bricolage Grotesque', sans-serif", fontWeight: 700, letterSpacing: 4, color: 'var(--lime)', textTransform: 'uppercase' }}>
             Deep Cut
           </span>
           <span style={{ flex: 1 }} />
@@ -86,14 +73,7 @@ export default function SetupPage() {
         </div>
       </header>
 
-      <div style={{
-        maxWidth: 1100, margin: '0 auto',
-        padding: isMobile ? '24px 16px' : '40px 24px',
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : '1fr 340px',
-        gap: isMobile ? 40 : 48,
-        alignItems: 'start',
-      }}>
+      <div className="page-grid">
 
         {/* LEFT: Topic selection */}
         <div>
@@ -125,7 +105,7 @@ export default function SetupPage() {
               </div>
 
               {/* Topic grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(auto-fill, minmax(160px, 1fr))' : 'repeat(auto-fill, minmax(220px, 1fr))', gap: 10 }}>
+              <div className="topic-grid">
                 {visibleLists.map((list) => {
                   const isSelected = selectedList?.slug === list.slug;
                   return (
