@@ -10,8 +10,9 @@ const TEAM_COLORS = ['#FF5555', '#5599FF', '#44DD77', '#FFCC33', '#AA77FF', '#FF
 interface Toast { id: number; message: string; type: 'hit' | 'miss'; }
 
 function useWindowWidth() {
-  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  const [width, setWidth] = useState(0);
   useEffect(() => {
+    setWidth(window.innerWidth);
     const handler = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handler);
     return () => window.removeEventListener('resize', handler);
