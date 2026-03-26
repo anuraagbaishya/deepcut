@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Cut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --bg: #09090C;
+        --surface: #101014;
+        --surface-2: #18181F;
+        --border: #25252F;
+        --border-2: #32323F;
+        --lime: #CCFF00;
+        --lime-dim: rgba(204,255,0,0.12);
+        --red: #FF4040;
+        --red-dim: rgba(255,64,64,0.12);
+        --green: #22D47A;
+        --green-dim: rgba(34,212,122,0.12);
+        --text: #EBEBF0;
+        --text-2: #8888A0;
+        --text-3: #444458;
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 16px;
+      }
+      body { background: var(--bg); color: var(--text); }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: var(--surface); }
+      ::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 2px; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
