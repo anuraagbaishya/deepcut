@@ -11,7 +11,7 @@ declare global {
 export async function connectDB() {
   if (global._mongooseConn) return global._mongooseConn;
 
-  const conn = await mongoose.connect(MONGODB_URI);
+  const conn = await mongoose.connect(MONGODB_URI, { dbName: 'deepcut' });
   global._mongooseConn = conn;
   return conn;
 }
